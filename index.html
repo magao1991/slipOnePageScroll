@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, height=device-height,initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="blank" />
+<meta name="description" content="修复slip.min.js内容滚动条">
+<title>修复slip.min.js内容滚动条</title>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	html, body {
+		font-size: 62.5%;
+		height: 100%;
+		font-family: 华文黑体, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	}
+	ul, li {
+		list-style: none;
+	}
+</style>
+</head>
+<body>
+	<ul id="scrollUl">
+		<li style="background: red;">
+			测试
+		</li>
+		<li id="scrollLi" style="background: yellow; overflow-y: scroll;">
+			<div id="scrollCons"></div>
+		</li>
+		<li style="background: blue;">
+			测试
+		</li>
+		<li style="background: black;">
+			测试
+		</li>
+	</ul>	
+<script type="text/javascript" src="./js/zepto.js"></script>
+<script type="text/javascript" src="./js/slip.min.js"></script>
+<script type="text/javascript" src="./js/slipOnePageScroll.js"></script>
+<script type="text/javascript">
+
+$(function() {
+	
+	for(var i = 0; i < 200; i++) {
+		var text = document.createElement('p');
+		text.innerHTML = '测试内容';
+		document.getElementById('scrollCons').appendChild(text);
+	}
+	
+	$('#scrollUl').slipOnePageScroll({
+		scEle: '#scrollLi'
+	});	
+
+});
+</script>
+</body>
+</html>
